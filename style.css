@@ -724,8 +724,7 @@ span{
         padding-bottom: 7rem;
         grid-template-columns: repeat(2,1fr);
         margin: 0 5rem;
-        align-items: center;
-        gap: 2.5rem;
+       
 
     }
 
@@ -841,6 +840,10 @@ span{
     .portfolio-container{
         grid-template-columns: repeat(1,1fr);
         
+    }
+
+    .portfolio-box{
+        height: 400px; 
     }
 
 
