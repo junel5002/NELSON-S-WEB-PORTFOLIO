@@ -843,8 +843,15 @@ span{
     .portfolio-container{
         grid-template-columns: repeat(1,1fr);
     }
+   
 
 
+}
+
+@media(max-width:375px){
+    .portfolio-box{
+        height: 600px;
+    }
 }
 
 
