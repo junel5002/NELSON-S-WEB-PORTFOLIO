@@ -471,7 +471,7 @@ span{
 .portfolio{
     background: var(--bg-color);
     color: black;
-    padding: 100px 50px;
+    padding: 100px 15px;
 
 }
 .portfolio h2{
@@ -724,7 +724,6 @@ span{
         padding-bottom: 7rem;
         grid-template-columns: repeat(2,1fr);
         margin: 0 5rem;
-       
 
     }
 
@@ -761,7 +760,7 @@ span{
     }
 
     .portfolio{
-        padding-bottom: 10rem;
+        padding-bottom: 7rem;
     }
 
     .testimonials .wrapper{
@@ -797,6 +796,10 @@ span{
         border-bottom: 2px solid var(--main-color);
         display: none;
 
+    }
+
+    .portfolio-box{
+        height: 450px;
     }
 
     .navbar.active{
@@ -839,13 +842,6 @@ span{
 
     .portfolio-container{
         grid-template-columns: repeat(1,1fr);
-        
-    }
-
-    .portfolio-box{
-        height: 700px; 
-        
-        
     }
 
 
