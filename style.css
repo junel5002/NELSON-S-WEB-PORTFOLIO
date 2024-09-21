@@ -844,6 +844,8 @@ span{
 
     .portfolio-box{
         height: 700px; 
+        width: 500px;
+        align-items: center;
     }
 
 
