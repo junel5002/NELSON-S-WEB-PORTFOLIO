@@ -471,6 +471,7 @@ span{
 .portfolio{
     background: var(--bg-color);
     color: black;
+    padding: 100px 15px;
 
 }
 .portfolio h2{
