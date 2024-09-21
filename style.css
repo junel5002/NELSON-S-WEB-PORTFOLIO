@@ -850,7 +850,7 @@ span{
 
 @media(max-width:375px){
     .portfolio-box{
-        min-height: 500px;
+        min-height: 600px;
         max-height: 750px;
     }
 }
