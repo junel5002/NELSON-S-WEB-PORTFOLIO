@@ -926,6 +926,18 @@ span{
 
 
 
+@media(max-width: 450px){
+    .portfolio-box{
+        min-height: 650px;
+        max-height: 750px;
+    }
+}
+
+
+
+
+
+
 
 
 
