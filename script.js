@@ -1,37 +1,44 @@
+const words = ["Frontend Designer", "Web Designer", "UI/UX Designer", "Web Developer", "Software Tester"];
+let wordIndex = 0;
+let charIndex = 0;
+let currentWord = '';
+const typingSpeed = 150;
+const erasingSpeed = 100;
+const delayBetweenWords = 2000; // 2 seconds delay between words
 
+const textElement = document.querySelector('.text-animation span');
 
-<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-let menuIcon = document.querySelector('#menu-icon');
-let sections = document.querySelectorAll('section')
-let navLinks = document.querySelectorAll('header nav 
-a'); 
+// Function to type the current word
+function typeWord() {
+    if (charIndex === 0) {
+        // Reset text content to prevent overlap
+        textElement.textContent = '';
+    }
 
-window.onscroll = () => {
-    sections.forEach(sec => {
-        let top = window.scrollY;
-        let offset = sec.offsetTop - 150;
-        let height = sec.offsetHeight;
-        let id= sec.getAttribute('id');
-
-        if(top >= offset && top < offset + height){
-            navLinks.forEach(links => {
-                links.classList.remove('active');
-                document.querySelector('header nav a 
-            [href*=' + id + ' ]').classList.add 
-            ('active')
-
-            })
-        }
-    })
+    if (charIndex < currentWord.length) {
+        textElement.textContent += currentWord.charAt(charIndex);
+        charIndex++;
+        setTimeout(typeWord, typingSpeed);
+    } else {
+        setTimeout(eraseWord, delayBetweenWords); // After typing, wait, then erase
+    }
 }
 
-menuIcon.onclick = () => {
-    menuIcon.classList.toggle('bx-x');
-    navbar.classList.toggle('active');
+// Function to erase the current word
+function eraseWord() {
+    if (charIndex > 0) {
+        textElement.textContent = currentWord.substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(eraseWord, erasingSpeed);
+    } else {
+        wordIndex = (wordIndex + 1) % words.length;
+        currentWord = words[wordIndex];
+        setTimeout(typeWord, typingSpeed); // Start typing the next word
+    }
 }
 
-
-
-
-
-
+// Initialize the typing effect
+document.addEventListener('DOMContentLoaded', () => {
+    currentWord = words[wordIndex];
+    setTimeout(typeWord, typingSpeed);
+});
