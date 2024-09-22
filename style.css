@@ -144,10 +144,6 @@ nav li:first-child{
 
 
 
-.home-content p {
-    font-size: 1.8rem;
-}
-
 
 
 
@@ -334,7 +330,6 @@ span{
     color: black;
 
 }
-
 .text-animation {
     font-size: 34px;
     font-weight: 600;
@@ -364,6 +359,7 @@ span{
         opacity: 0;
     }
 }
+
 
 
 .heading{
@@ -600,6 +596,7 @@ span{
 
 }
 
+
 .testimonial-item:hover{
     border: 3px solid var(--main-color);
     transform: translateY(-10px)scale(1.03);
@@ -800,6 +797,10 @@ span{
 }
 
 
+.home-content p {
+    font-size: 1.8rem;
+}
+
 
 
 
@@ -807,14 +808,15 @@ span{
 
 @media(max-width:895px){
    
-    .header{
-        position: relative;
-    }
-     
+    
+    
     .home-content p {
         font-size: 1.8rem;
     }
     
+    .header{
+        position: relative;
+    }
 
     .home{
         flex-direction: column-reverse;
@@ -829,6 +831,10 @@ span{
         font-size: 8rem;
         margin-top: 3rem;
     }
+
+
+   
+    
 
     .home-content p{
         max-width: 600px;
@@ -861,6 +867,10 @@ span{
 
 
 
+
+
+
+
 @media(max-width:375px){
     .portfolio-box{
         min-height: 600px;
@@ -868,10 +878,6 @@ span{
     }
     .heading{font-size: 7rem;}
 }
-
-    .header{
-        position: relative;
-    }
 
 
 
@@ -890,11 +896,7 @@ span{
 
     .menu-button{
         display: block;
-    }
-
-
-    .header{
-        position: relative;
+        
     }
 
    
