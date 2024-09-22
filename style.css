@@ -794,6 +794,18 @@ span{
     }
 
 
+    
+    .home-content p {
+    font-size: 1.8rem;
+    }
+
+    
+    .portfolio-box{
+    min-height: 600px;
+    max-height: 750px;
+    }
+
+
 }
 
 
@@ -851,6 +863,12 @@ span{
 
     .portfolio-container{
         grid-template-columns: repeat(1,1fr);
+    }
+
+
+    .portfolio-box{
+        min-height: 600px;
+        max-height: 750px;
     }
    
 
