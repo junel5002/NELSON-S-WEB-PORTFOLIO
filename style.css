@@ -877,7 +877,9 @@ span{
 
 @media(max-width:895px){
    
-    
+    .header{
+        position: relative;
+    }
      
     .home-content p {
         font-size: 1.8rem;
