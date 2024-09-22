@@ -939,6 +939,10 @@ span{
     .heading{font-size: 7rem;}
 }
 
+    .header{
+        position: relative;
+    }
+
 
 
 
