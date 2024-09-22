@@ -335,92 +335,33 @@ span{
 
 }
 
-.text-animation{
+.text-animation {
     font-size: 34px;
     font-weight: 600;
     min-width: 280px;
-    
-
-}
-
-.text-animation span{
     position: relative;
-    
-
+    display: inline-block;
 }
 
-.text-animation span:before{
-    content: "Web Developer";
+.text-animation span {
+    position: relative;
     color: var(--main-color);
-    animation: words 20s infinite;
-    
-
 }
 
-
-
-
-
-
-
-
-
-@keyframes cursor{
-    to{
-        border-left: 2px solid var(--main-color);
-    }
+.text-animation span:after {
+    content: "";
+    background-color: var(--main-color);
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    top: 0;
+    right: 0;
+    animation: blink-cursor 0.8s steps(1) infinite;
 }
 
-@keyframes words{
-    
-    0%,
-    20%{
-        content: "Frontend Designer";
-    }
-    21%,
-    40%{
-        content: "Web Designer";
-    }
-    41%,
-    60%{
-        content: "UI / UX Designer";
-    }
-    61%,
-    80%{
-        content: "Web Developer";
-
-    }
-    81%, 
-    100%{
-        content: "Software Tester";
-    }
-}
-
-
-@keyframes typing{
-    10%,
-    15%,
-    30%,
-    35%,
-    50%,
-    55%,
-    70%,
-    75%,
-    90%,
-    95%{
-        width: 0;
-    }
-
-    5%,
-    20%,
-    25%,
-    40%,
-    45%,
-    60%,
-    65%,
-    80%,
-    85%{
-        width: calc(100% + 8px);
+@keyframes blink-cursor {
+    50% {
+        opacity: 0;
     }
 }
 
