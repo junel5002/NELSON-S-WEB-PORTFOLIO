@@ -127,6 +127,7 @@ span{
     cursor: pointer;
     border-radius: 10%;
     text-decoration: none;
+    height: 50vh;
 }
 
 
