@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nelson's portfolio</title>
+    <link rel="stylesheet" href="About.css">
+    <link rel="shortcut icon" href="img/N.avif" type="image/x-icon">
+    
+
+</head>
+<body>
+    <a href="#" class="logo">NX's
+        <span>Gallery</span></a>
+
+    <div class="full-img" id="fullImgBox">
+        <img src="img/nsmq 4.jpg" id="fullImg">
+        <span onclick="closeFullImg()">X</span>
+    </div>
+    <div class="img-gallery">
+        <img src="img/nsmq 1.jpg" onclick="openFullImg(this.src)">
+        <img src="img/nsmq 4.jpg" onclick="openFullImg(this.src)">
+        <img src="img/nsmq 2.jpg" onclick="openFullImg(this.src)">
+        <img src="img/nsmq 3.jpg" onclick="openFullImg(this.src)">
+        <img src="img/nsmq 5.jpg" onclick="openFullImg(this.src)">
+        <img src="img/nsmq 6.jpg" onclick="openFullImg(this.src)">
+        <img src="img/nsmq 7.jpg" onclick="openFullImg(this.src)">
+       
+    </div>
+
+    <script>
+        var fullImgBox = document.getElementById("fullImgBox");
+        var fullImg = document.getElementById("fullImg");
+        
+        function openFullImg(pic){
+            fullImgBox.style.display = "flex";
+            fullImg.src = pic;
+
+
+        }
+
+            function closeFullImg(){
+                fullImgBox.style.display = "none";
+
+            }
+
+      
+        
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
