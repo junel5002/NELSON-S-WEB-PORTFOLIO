@@ -793,7 +793,6 @@ span{
         padding: 2rem 3%;
     }
 
-
     
     .home-content p {
     font-size: 1.8rem;
@@ -811,7 +810,10 @@ span{
 
 .home-content p {
     font-size: 1.8rem;
-}
+    }
+
+
+
 
 
 
@@ -845,6 +847,12 @@ span{
     }
 
 
+    .portfolio-box{
+        min-height: 600px;
+        max-height: 750px;
+    }
+
+
    
     
 
@@ -864,12 +872,6 @@ span{
     .portfolio-container{
         grid-template-columns: repeat(1,1fr);
     }
-
-
-    .portfolio-box{
-        min-height: 600px;
-        max-height: 750px;
-    }
    
 
 
@@ -879,7 +881,12 @@ span{
 
 
 
-
+@media(max-width: 450px){
+    .portfolio-box{
+        min-height: 650px;
+        max-height: 750px;
+    }
+}
 
 
 
@@ -921,18 +928,6 @@ span{
 
     
 }
-
-
-
-
-
-@media(max-width: 450px){
-    .portfolio-box{
-        min-height: 650px;
-        max-height: 750px;
-    }
-}
-
 
 
 
