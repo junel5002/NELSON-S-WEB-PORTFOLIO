@@ -6,8 +6,6 @@
     <title>Nelson's portfolio</title>
     <link rel="stylesheet" href="About.css">
     <link rel="shortcut icon" href="img/N.avif" type="image/x-icon">
-    
-
 </head>
 <body>
     <a href="#" class="logo">NX's
@@ -17,6 +15,7 @@
         <img src="img/nsmq 4.jpg" id="fullImg">
         <span onclick="closeFullImg()">X</span>
     </div>
+
     <div class="img-gallery">
         <img src="img/nsmq 1.jpg" onclick="openFullImg(this.src)">
         <img src="img/nsmq 4.jpg" onclick="openFullImg(this.src)">
@@ -30,28 +29,16 @@
         <img src="img/IMG-S1.jpg" onclick="openFullImg(this.src)">
         <img src="img/IMG-S2.jpg" onclick="openFullImg(this.src)">
         <img src="img/IMG-S3.jpg" onclick="openFullImg(this.src)">
-       
     </div>
     <br><br>
     <a href="#" class="logo">Video
         <span>Portfolio</span></a><br>
 
-        <div class="img-gallery">
-            
-            <video src="videos/Resume Video.mp4" controls width="400" ></video>
-            <video src="videos/Sharks Resume.mp4" controls width="400px"></video>
-            <video src="videos/ASELEM.mp4" controls width="400px"></video>
-
-        </div>
-
-
-
-
-
-
-
-
-
+    <div class="img-gallery">
+        <video src="videos/Resume Video.mp4" controls class="video-responsive"></video>
+        <video src="videos/Sharks Resume.mp4" controls class="video-responsive"></video>
+        <video src="videos/ASELEM.mp4" controls class="video-responsive"></video>
+    </div>
 
     <script>
         var fullImgBox = document.getElementById("fullImgBox");
@@ -60,22 +47,11 @@
         function openFullImg(pic){
             fullImgBox.style.display = "flex";
             fullImg.src = pic;
-
-
         }
 
-            function closeFullImg(){
-                fullImgBox.style.display = "none";
-
-            }
-
-      
-        
+        function closeFullImg(){
+            fullImgBox.style.display = "none";
+        }
     </script>
-
-
-
 </body>
-
-
 </html>
