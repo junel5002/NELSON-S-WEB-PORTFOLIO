@@ -1,4 +1,4 @@
-const words = ["Frontend Designer", "Web Designer", "UI/UX Designer", "Web Developer", "Software Tester"];
+const words = ["Music Techie", "Frontend Designer", "Web Designer", "UI/UX Designer", "Web Developer", "Software Tester"];
 let wordIndex = 0;
 let charIndex = 0;
 let currentWord = '';
