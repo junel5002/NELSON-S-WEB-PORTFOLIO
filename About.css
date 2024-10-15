@@ -39,6 +39,12 @@ body {
     box-shadow: 0 32px 75px rgba(68, 77, 136, 0.2);
 }
 
+.video-responsive {
+    width: 400px; 
+    height: 250px;
+    object-fit: cover;
+}
+
 
 .full-img {
     width: 100%;
