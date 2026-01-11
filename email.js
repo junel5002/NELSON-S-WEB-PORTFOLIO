@@ -137,7 +137,7 @@ class EmailService {
             };
 
             const response = await emailjs.send(
-                'YOUR_SERVICE_ID_HERE',        // STEP 3: Email Service ID
+                'service_w49mmpi',        // STEP 3: Email Service ID
                 'YOUR_INTERNAL_TEMPLATE_ID',  // STEP 4: Internal Template ID
                 internalData
             );
