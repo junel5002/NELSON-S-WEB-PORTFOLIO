@@ -88,7 +88,7 @@ class EmailService {
     const autoReplyData = {
       to_name: formData.from_name,
       to_email: formData.from_email,
-      from_name: "Nelson Kwesi", // change to your brand/name
+      from_name: "Nelson Kwesi Xedzro", // change to your brand/name
       subject: `We received your message: ${formData.subject}`,
       message: formData.message,
       date: formData.date,
@@ -98,7 +98,7 @@ class EmailService {
 
     return emailjs.send(
       "service_w49mmpi",              // your service id
-      "YOUR_AUTOREPLY_TEMPLATE_ID",   // put your auto-reply template id here
+      "template_1kmek4e",   // put your auto-reply template id here
       autoReplyData
     );
   }
@@ -119,7 +119,7 @@ class EmailService {
 
     return emailjs.send(
       "service_w49mmpi",
-      "YOUR_INTERNAL_TEMPLATE_ID", // put your internal template id here
+      "template_0rl1my6", // put your internal template id here
       internalData
     );
   }
