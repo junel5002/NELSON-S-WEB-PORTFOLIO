@@ -56,128 +56,102 @@ STEP 5: Make sure TEMPLATE VARIABLES match JS KEYS
 // ===============================
 // EmailJS Service
 // ===============================
-class EmailService {
-  constructor() {
-    this.initialized = false;
-    this.init();
-  }
+// -------------------------------
+// CONFIG (fill these in)
+// -------------------------------
+const EMAILJS_PUBLIC_KEY = "5E_Zbk25C2FE18HBv";
+const EMAILJS_SERVICE_ID = "service_w49mmpi"; // your service id
 
-  init() {
-    if (typeof emailjs === "undefined") {
-      console.error("EmailJS is not loaded. Check script inclusion.");
-      return;
-    }
+const EMAILJS_TEMPLATE_INTERNAL = "YOUR_INTERNAL_TEMPLATE_ID";
+const EMAILJS_TEMPLATE_AUTOREPLY = "YOUR_AUTOREPLY_TEMPLATE_ID";
 
-    try {
-      emailjs.init("5E_Zbk25C2FE18HBv"); // your public key
-      this.initialized = true;
-      console.log("EmailJS initialized");
-    } catch (error) {
-      console.error("EmailJS init failed:", error);
-    }
-  }
+// Optional: your email for internal notifications if your template uses {{to_email}}
+const YOUR_RECEIVER_EMAIL = "your-email@example.com";
 
-  generateMessageId() {
-    return "MSG_" + Date.now() + "_" + Math.random().toString(36).slice(2, 11);
-  }
-
-  // Auto-reply Email (to user)
-  async sendAutoReply(formData) {
-    if (!this.initialized) throw new Error("EmailJS not initialized");
-
-    const autoReplyData = {
-      to_name: formData.from_name,
-      to_email: formData.from_email,
-      from_name: "Nelson Kwesi Xedzro", // change to your brand/name
-      subject: `We received your message: ${formData.subject}`,
-      message: formData.message,
-      date: formData.date,
-      message_id: formData.message_id,
-      reply_to: "your-email@example.com" // optional
-    };
-
-    return emailjs.send(
-      "service_w49mmpi",              // your service id
-      "template_1kmek4e",   // put your auto-reply template id here
-      autoReplyData
-    );
-  }
-
-  // Internal Notification (to you)
-  async sendInternalNotification(formData) {
-    if (!this.initialized) throw new Error("EmailJS not initialized");
-
-    const internalData = {
-      from_name: formData.from_name,
-      from_email: formData.from_email,
-      phone: formData.phone,
-      subject: formData.subject,
-      message: formData.message,
-      date: formData.date,
-      message_id: formData.message_id
-    };
-
-    return emailjs.send(
-      "service_w49mmpi",
-      "template_0rl1my6", // put your internal template id here
-      internalData
-    );
-  }
-
-  async handleFormSubmission(formData) {
-    const results = await Promise.allSettled([
-      this.sendInternalNotification(formData),
-      this.sendAutoReply(formData)
-    ]);
-
-    return {
-      internalSuccess: results[0].status === "fulfilled",
-      autoReplySuccess: results[1].status === "fulfilled",
-      results
-    };
-  }
-}
-
-const emailService = new EmailService();
-
+// -------------------------------
+// INIT
+// -------------------------------
 document.addEventListener("DOMContentLoaded", () => {
-  const contactForm = document.getElementById("contactForm");
-  const statusEl = document.getElementById("formStatus");
-  if (!contactForm) return;
+  if (typeof emailjs === "undefined") {
+    console.error("EmailJS SDK not loaded. Check script tag order.");
+    return;
+  }
 
-  contactForm.addEventListener("submit", async (e) => {
+  emailjs.init(EMAILJS_PUBLIC_KEY);
+
+  const form = document.getElementById("contactForm");
+  const statusEl = document.getElementById("formStatus");
+
+  if (!form) return;
+
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const formData = {
-      from_name: contactForm.querySelector('input[name="from_name"]').value.trim(),
-      from_email: contactForm.querySelector('input[name="from_email"]').value.trim(),
-      phone: contactForm.querySelector('input[name="phone"]').value.trim(),
-      subject: contactForm.querySelector('input[name="subject"]').value.trim(),
-      message: contactForm.querySelector('textarea[name="message"]').value.trim(),
-      date: new Date().toLocaleString(),
-      message_id: "MSG_" + Date.now()
-    };
+    // Get form values (MUST match name="" attributes)
+    const from_name = form.querySelector('[name="from_name"]').value.trim();
+    const from_email = form.querySelector('[name="from_email"]').value.trim();
+    const phone = form.querySelector('[name="phone"]').value.trim();
+    const subject = form.querySelector('[name="subject"]').value.trim();
+    const message = form.querySelector('[name="message"]').value.trim();
 
-    if (!formData.from_name || !formData.from_email || !formData.subject || !formData.message) {
+    if (!from_name || !from_email || !subject || !message) {
       if (statusEl) statusEl.textContent = "Please fill in all required fields.";
       return;
     }
 
+    const payloadCommon = {
+      from_name,
+      from_email,
+      phone,
+      subject,
+      message,
+      date: new Date().toLocaleString(),
+      message_id: `MSG_${Date.now()}`
+    };
+
+    // -------------------------------
+    // INTERNAL TEMPLATE PAYLOAD
+    // (Sent to you / your inbox)
+    // -------------------------------
+    const internalPayload = {
+      ...payloadCommon,
+      to_email: YOUR_RECEIVER_EMAIL // only needed if your EmailJS template uses it
+    };
+
+    // -------------------------------
+    // AUTOREPLY TEMPLATE PAYLOAD
+    // (Sent to the user)
+    // IMPORTANT: your EmailJS template "To Email" should be {{to_email}}
+    // -------------------------------
+    const autoReplyPayload = {
+      ...payloadCommon,
+      to_name: from_name,
+      to_email: from_email,
+      from_name: "Nelson Kwesi Xedzro" // displayed in the auto reply
+    };
+
     try {
       if (statusEl) statusEl.textContent = "Sending...";
 
-      const result = await emailService.handleFormSubmission(formData);
+      // Send internal + auto reply
+      const results = await Promise.allSettled([
+        emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_INTERNAL, internalPayload),
+        emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_AUTOREPLY, autoReplyPayload)
+      ]);
 
-      if (result.internalSuccess || result.autoReplySuccess) {
+      const internalOk = results[0].status === "fulfilled";
+      const autoOk = results[1].status === "fulfilled";
+
+      if (internalOk || autoOk) {
         if (statusEl) statusEl.textContent = "Message sent successfully ✅";
-        contactForm.reset();
+        form.reset();
       } else {
         if (statusEl) statusEl.textContent = "Failed to send message. Please try again.";
+        console.error("EmailJS failures:", results);
       }
     } catch (err) {
-      console.error("Submission failed:", err);
       if (statusEl) statusEl.textContent = "Error sending message. Please try again.";
+      console.error("EmailJS error:", err);
     }
   });
 });
-
