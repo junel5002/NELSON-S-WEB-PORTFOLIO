@@ -62,8 +62,8 @@ STEP 5: Make sure TEMPLATE VARIABLES match JS KEYS
 const EMAILJS_PUBLIC_KEY = "5E_Zbk25C2FE18HBv";
 const EMAILJS_SERVICE_ID = "service_w49mmpi"; // your service id
 
-const EMAILJS_TEMPLATE_INTERNAL = "YOUR_INTERNAL_TEMPLATE_ID";
-const EMAILJS_TEMPLATE_AUTOREPLY = "YOUR_AUTOREPLY_TEMPLATE_ID";
+const EMAILJS_TEMPLATE_INTERNAL = "template_0rl1my6";
+const EMAILJS_TEMPLATE_AUTOREPLY = "template_1kmek4e";
 
 // Optional: your email for internal notifications if your template uses {{to_email}}
 const YOUR_RECEIVER_EMAIL = "your-email@example.com";
