@@ -191,30 +191,30 @@
     
     
     <section class="contact" id="contact">
-  <h2 class="heading">Contact <span>Me</span></h2>
+      <h2 class="heading">Contact <span>Me</span></h2>
 
-  <form id="contactForm" autocomplete="on">
-    <div class="input-group">
-      <div class="input-box">
-        <input type="text" name="from_name" placeholder="Full Name" required />
-        <input type="email" name="from_email" placeholder="Email" required />
-      </div>
-    </div>
+      <form id="contactForm" autocomplete="on">
+        <div class="input-group">
+          <div class="input-box">
+            <input type="text" name="from_name" placeholder="Full Name" required />
+            <input type="email" name="from_email" placeholder="Email" required />
+          </div>
+        </div>
 
-    <div class="input-box">
-      <input type="tel" name="phone" placeholder="Phone Number" />
-      <input type="text" name="subject" placeholder="Subject" required />
-    </div>
+        <div class="input-box">
+          <input type="tel" name="phone" placeholder="Phone Number (optional)" />
+          <input type="text" name="subject" placeholder="Subject" required />
+        </div>
 
-    <div class="input-group-2">
-      <textarea name="message" cols="30" rows="10" placeholder="Your Message" required></textarea>
-      <input type="submit" value="Send Message" class="btn" />
-    </div>
+        <div class="input-group-2">
+          <textarea name="message" cols="30" rows="10" placeholder="Your Message" required></textarea>
+          <input type="submit" value="Send Message" class="btn" />
+        </div>
+    
+        <p id="formStatus" style="margin-top: 10px;"></p>
+      </form>
+    </section>
 
-    <!-- optional status text -->
-    <p id="formStatus" style="margin-top:10px;"></p>
-  </form>
-</section>
 
 
     <footer class="footer">
@@ -271,12 +271,8 @@
 
     <script src="script.js"></script>
 
-    <!-- EmailJS SDK (must come before your email.js) -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
-<!-- Your script -->
     <script src="email.js"></script>
-
 
     
     
