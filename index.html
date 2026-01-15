@@ -190,29 +190,30 @@
     
     
     
-    <div class="contact-form">
-        <form id="contactForm" novalidate>
-            <div class="form-group visually-hidden">
-                <label for="website">Leave this field empty</label>
-                <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
-            </div>
-            <div class="form-group">
-                <input type="text" name="name" class="form-control" placeholder="Your Name" autocomplete="name" required>
-            </div>
-            <div class="form-group">
-                <input type="email" name="reply_to" class="form-control" placeholder="Your Email" autocomplete="email" required>
-            </div>
-            <div class="form-group">
-                <input type="text" name="title" class="form-control" placeholder="Subject" autocomplete="organization-title" required>
-            </div>
-            <div class="form-group">
-                <textarea name="message" class="form-control" placeholder="Your Message" rows="5" autocomplete="off"
-                    required></textarea>
-            </div>
-            <button type="submit" class="submit-btn">Send Message</button>
-        </form>
-        <p id="statusMessage" role="status" aria-live="polite" style="display: none;"></p>
+    <h2 class="heading">Contact <span>Me</span></h2>
+
+  <form id="contactForm" autocomplete="on">
+    <div class="input-group">
+      <div class="input-box">
+        <input type="text" name="from_name" placeholder="Full Name" required />
+        <input type="email" name="from_email" placeholder="Email" required />
+      </div>
     </div>
+
+    <div class="input-box">
+      <input type="tel" name="phone" placeholder="Phone Number" />
+      <input type="text" name="subject" placeholder="Subject" required />
+    </div>
+
+    <div class="input-group-2">
+      <textarea name="message" cols="30" rows="10" placeholder="Your Message" required></textarea>
+      <input type="submit" value="Send Message" class="btn" />
+    </div>
+
+    <!-- optional status text -->
+    <p id="formStatus" style="margin-top:10px;"></p>
+  </form>
+</section>
 
 
 
